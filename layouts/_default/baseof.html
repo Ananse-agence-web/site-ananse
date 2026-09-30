@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {{- $titre := cond .IsHome (printf "%s — %s" site.Params.marque site.Params.slogan) (printf "%s — %s" .Title site.Params.marque) }}
+  {{- if eq .Kind "404" }}{{ $titre = printf "Page introuvable — %s" site.Params.marque }}{{ end }}
   <title>{{ $titre }}</title>
   <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}">
   <meta name="theme-color" content="#FBF6EE">
