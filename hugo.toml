@@ -1,0 +1,59 @@
+baseURL = "https://ananse.fr/"
+languageCode = "fr-FR"
+defaultContentLanguage = "fr"
+title = "Ananse"
+enableRobotsTXT = true
+disableKinds = ["taxonomy", "term"]
+
+[markup.goldmark.renderer]
+  unsafe = false
+
+[markup.highlight]
+  noClasses = true
+  style = "monokai"
+
+[params]
+  marque = "Ananse"
+  slogan = "On tisse votre web."
+  description = "Ananse, agence web : sites vitrines, applications web et outils sur mesure. Livrés en quelques jours, rapides, sans cookie ni traceur."
+
+  # Adresse de contact officielle
+  email = "Ananse.Agence.Web@gmail.com"
+  # Site de démonstration « Ce qu'on peut faire avec le static »
+  outils = "https://tools.ananse.fr/"
+  # Clé Web3Forms (https://web3forms.com, gratuite, liée à l'e-mail ci-dessus).
+  # Vide = le formulaire est remplacé par un simple lien e-mail.
+  web3formsCle = ""
+
+[permalinks]
+  blog = "/blog/:slug/"
+
+[menus]
+  [[menus.main]]
+    name = "Offres"
+    url = "/#offres"
+    weight = 1
+  [[menus.main]]
+    name = "Location & Airbnb"
+    url = "/immobilier-locatif/"
+    weight = 2
+  [[menus.main]]
+    name = "Réalisations"
+    url = "/#realisations"
+    weight = 3
+  [[menus.main]]
+    name = "Nos applis"
+    url = "/#applis"
+    weight = 4
+  [[menus.main]]
+    name = "Blog"
+    url = "/blog/"
+    weight = 5
+  [[menus.main]]
+    name = "Démos"
+    url = "https://tools.ananse.fr/"
+    weight = 6
+  [[menus.main]]
+    name = "Notre histoire"
+    url = "/#histoire"
+    weight = 7

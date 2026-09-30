@@ -1,0 +1,11 @@
+{{ define "main" }}
+<section class="page page--404">
+  <div class="conteneur centre">
+    {{ partial "mascotte.html" (dict "id" "p404" "pose" "loupe" "classe" "page404__mascotte") }}
+    <p class="surtitre">Erreur 404</p>
+    <h1>Ce fil ne mène nulle part…</h1>
+    <p>Notre araignée a beau chercher, cette page n'existe pas (ou plus).</p>
+    <p><a class="bouton" href="{{ "" | relURL }}">Retour à l'accueil {{ partial "icone.html" (dict "nom" "fleche") }}</a></p>
+  </div>
+</section>
+{{ end }}

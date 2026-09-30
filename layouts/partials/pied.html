@@ -1,0 +1,27 @@
+<footer class="pied">
+  <div class="conteneur pied__grille">
+    <div>
+      <p class="pied__marque">{{ site.Params.marque }}</p>
+      <p>{{ site.Params.slogan }} Sites, applis et outils web, tissés avec soin.</p>
+    </div>
+    <nav aria-label="Liens du pied de page">
+      <ul>
+        {{- range site.Menus.main }}
+        <li><a href="{{ .URL | relURL }}">{{ .Name }}</a></li>
+        {{- end }}
+        <li><a href="{{ "" | relURL }}#contact">Contact</a></li>
+        <li><a href="{{ site.Params.outils }}">Ce qu'on peut faire avec le static</a></li>
+      </ul>
+    </nav>
+    <nav aria-label="Informations légales">
+      <ul>
+        <li><a href="{{ "mentions-legales/" | relURL }}">Mentions légales</a></li>
+        <li><a href="{{ "cgv/" | relURL }}">CGV</a></li>
+        <li><a href="{{ "confidentialite/" | relURL }}">Confidentialité</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="conteneur pied__bas">
+    <p>© {{ now.Year }} {{ site.Params.marque }} · Ce site ne dépose aucun cookie et n'utilise aucun traceur.</p>
+  </div>
+</footer>

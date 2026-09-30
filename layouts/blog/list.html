@@ -1,0 +1,16 @@
+{{ define "main" }}
+<section class="page page--blog">
+  <div class="conteneur conteneur--large">
+    <header class="section__tete">
+      <p class="surtitre">Le blog</p>
+      <h1>Le fil d'Ananse</h1>
+      <p>Nos explications, sans jargon inutile, sur les technologies que nous utilisons et pourquoi nous les choisissons.</p>
+    </header>
+    <div class="articles">
+      {{- range .Pages.ByDate.Reverse }}
+      {{ partial "carte-article.html" . }}
+      {{- end }}
+    </div>
+  </div>
+</section>
+{{ end }}

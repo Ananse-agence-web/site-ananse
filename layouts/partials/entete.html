@@ -1,0 +1,20 @@
+<header class="entete">
+  <div class="conteneur entete__barre">
+    <a class="logo" href="{{ "" | relURL }}" aria-label="{{ site.Params.marque }}, accueil">
+      {{ partial "mascotte.html" (dict "id" "logo" "pose" "assis" "classe" "logo__mascotte") }}
+      <span class="logo__nom">{{ site.Params.marque }}</span>
+    </a>
+    <button class="menu-bouton" type="button" aria-expanded="false" aria-controls="menu">
+      <span class="menu-bouton__barres" aria-hidden="true"></span>
+      <span class="sr">Menu</span>
+    </button>
+    <nav id="menu" class="menu" aria-label="Menu principal">
+      <ul>
+        {{- range site.Menus.main }}
+        <li><a href="{{ .URL | relURL }}">{{ .Name }}</a></li>
+        {{- end }}
+      </ul>
+      <a class="bouton bouton--petit" href="{{ "" | relURL }}#contact">Demander un devis</a>
+    </nav>
+  </div>
+</header>

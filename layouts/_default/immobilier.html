@@ -1,0 +1,175 @@
+{{ define "main" }}
+
+<section class="hero hero--page">
+  <svg class="fils fils--hero" viewBox="0 0 1200 600" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 110 Q340 30 620 120 T1200 60"/>
+  </svg>
+  <div class="conteneur hero__grille">
+    <div class="hero__texte">
+      <p class="surtitre">Location saisonnière & locative</p>
+      <h1>Un site rien qu'à lui pour <span class="souligne">chaque logement</span>.</h1>
+      <p class="hero__intro">Studio, appartement, gîte ou maison de vacances : nous créons un site dédié à votre bien. De grandes photos, chaque pièce présentée, le quartier, et un contact direct avec vos futurs voyageurs ou locataires.</p>
+      <div class="hero__actions">
+        <a class="bouton" href="#contact-bien">Demander un devis {{ partial "icone.html" (dict "nom" "fleche") }}</a>
+        <a class="bouton bouton--contour" href="#contenu-site">Ce que contient le site</a>
+      </div>
+    </div>
+
+    {{- /* Maquette d'un logement fictif : illustration, aucun lien vers un vrai site */ -}}
+    <div class="bien" aria-label="Exemple fictif de site pour un logement">
+      <div class="bien__fenetre">
+        <div class="bien__barre" aria-hidden="true"><i></i><i></i><i></i><span>votre-logement.fr</span></div>
+        <svg class="bien__photo" viewBox="0 0 400 200" aria-hidden="true">
+          <rect width="400" height="200" fill="#F4E3C8"/>
+          <rect y="150" width="400" height="50" fill="#D9B98E"/>
+          <rect x="36" y="30" width="96" height="92" rx="6" fill="#CDE8F0" stroke="#fff" stroke-width="6"/>
+          <path d="M84 30 V122 M36 76 H132" stroke="#fff" stroke-width="5"/>
+          <circle cx="110" cy="54" r="10" fill="#F2B33D"/>
+          <rect x="176" y="40" width="54" height="40" rx="3" fill="#fff"/>
+          <rect x="181" y="45" width="44" height="30" fill="#B8452C" opacity=".8"/>
+          <path d="M181 75 L198 58 L210 68 L225 52 V75 Z" fill="#2E8B57" opacity=".9"/>
+          <rect x="160" y="104" width="150" height="46" rx="14" fill="#2E8B57"/>
+          <rect x="150" y="96" width="30" height="54" rx="12" fill="#27774A"/>
+          <rect x="290" y="96" width="30" height="54" rx="12" fill="#27774A"/>
+          <rect x="190" y="92" width="36" height="24" rx="8" fill="#F2B33D"/>
+          <rect x="236" y="92" width="36" height="24" rx="8" fill="#F28C7A"/>
+          <ellipse cx="236" cy="176" rx="110" ry="12" fill="#B8452C" opacity=".35"/>
+          <rect x="346" y="120" width="26" height="30" rx="4" fill="#B8452C"/>
+          <ellipse cx="352" cy="104" rx="12" ry="22" fill="#2E8B57" transform="rotate(-18 352 104)"/>
+          <ellipse cx="366" cy="102" rx="11" ry="20" fill="#3aa36a" transform="rotate(20 366 102)"/>
+          <path d="M60 150 V96 M44 96 H76 L68 78 H52 Z" stroke="#231F1C" stroke-width="3" fill="#FBF6EE" stroke-linejoin="round"/>
+        </svg>
+        <div class="bien__corps">
+          <div class="bien__tete">
+            <div>
+              <p class="bien__nom">Le Nid des Tilleuls</p>
+              <p class="bien__infos">Studio · 2 voyageurs · Centre-ville</p>
+            </div>
+            <span class="bien__note">★ 4,9</span>
+          </div>
+          <div class="bien__vignettes" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+          <ul class="bien__puces" role="list"><li>Wi-Fi</li><li>Cuisine équipée</li><li>Proche gare</li></ul>
+          <span class="bien__bouton">Demander une réservation</span>
+        </div>
+      </div>
+      <div class="bien__qr">
+        <svg viewBox="0 0 21 21" aria-hidden="true" shape-rendering="crispEdges">
+          <path fill="#231F1C" d="M0 0h7v7H0zM14 0h7v7h-7zM0 14h7v7H0z"/>
+          <path fill="#fff" d="M1 1h5v5H1zM15 1h5v5h-5zM1 15h5v5H1z"/>
+          <path fill="#231F1C" d="M2 2h3v3H2zM16 2h3v3h-3zM2 16h3v3H2zM8 0h1v2H8zM10 1h2v1h-2zM8 3h3v1H8zM12 4h1v3h-1zM9 5h2v2H9zM0 8h2v1H0zM3 8h3v1H3zM8 8h2v2H8zM11 8h3v1h-3zM15 8h2v2h-2zM18 8h3v1h-3zM1 10h2v2H1zM5 10h2v1H5zM12 10h2v2h-2zM16 11h3v1h-3zM8 12h3v1H8zM19 12h2v3h-2zM8 14h1v3H8zM10 14h3v1h-3zM14 14h3v2h-3zM11 16h2v2h-2zM15 17h1v4h-1zM17 17h2v1h-2zM9 18h1v3H9zM11 19h3v1h-3zM17 19h4v2h-4z"/>
+        </svg>
+        <span>Livret d'accueil<br>numérique</span>
+      </div>
+      {{ partial "mascotte.html" (dict "id" "bien" "pose" "telephone" "classe" "bien__mascotte") }}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="conteneur">
+    <header class="section__tete revele">
+      <p class="surtitre">Pourquoi un site par logement</p>
+      <h2>Votre bien mérite mieux qu'une annonce parmi d'autres</h2>
+      <p>Les plateformes vous apportent des voyageurs. Un site à vous leur donne envie de revenir, sans passer par elles.</p>
+    </header>
+    <div class="cartes cartes--4">
+      <article class="carte revele" style="--i:0"><span class="carte__icone">{{ partial "icone.html" (dict "nom" "cle") }}</span><h3>Réservations en direct</h3><p>Vos anciens voyageurs et leurs amis vous contactent directement, sans commission de plateforme.</p></article>
+      <article class="carte revele" style="--i:1"><span class="carte__icone">{{ partial "icone.html" (dict "nom" "photo") }}</span><h3>Un bien mis en valeur</h3><p>De grandes photos et chaque pièce décrite : bien plus de place qu'une annonce classique.</p></article>
+      <article class="carte revele" style="--i:2"><span class="carte__icone">{{ partial "icone.html" (dict "nom" "loupe") }}</span><h3>Trouvé sur Google</h3><p>Le nom de votre logement et de votre ville deviennent une page bien référencée, qui vous appartient.</p></article>
+      <article class="carte revele" style="--i:3"><span class="carte__icone">{{ partial "icone.html" (dict "nom" "coeur") }}</span><h3>Une image pro</h3><p>Un lien propre à partager partout : réseaux sociaux, e-mails, carte de visite ou QR code dans le logement.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="contenu-site" class="section section--teinte">
+  <div class="conteneur">
+    <header class="section__tete revele">
+      <p class="surtitre">Ce que contient le site</p>
+      <h2>Tout ce qu'un voyageur veut savoir avant de réserver</h2>
+    </header>
+    <ul class="coches" role="list">
+      {{- range $i, $c := slice
+        (dict "t" "Galerie photos" "d" "Grandes images, rapides à charger, même sur mobile.")
+        (dict "t" "Pièce par pièce" "d" "Séjour, cuisine, chambre, salle de bain : chaque espace décrit.")
+        (dict "t" "Équipements" "d" "Wi-Fi, linge, parking, accessibilité… en un coup d'œil.")
+        (dict "t" "Le quartier ou le village" "d" "Commerces, balades, transports : ce qui rend le lieu unique.")
+        (dict "t" "Accès et plan" "d" "Comment venir, en train ou en voiture.")
+        (dict "t" "Avis des voyageurs" "d" "Vos meilleurs retours mis en avant.")
+        (dict "t" "Demande de réservation" "d" "Un formulaire simple : dates, nombre de voyageurs, message.")
+        (dict "t" "Français et anglais" "d" "Pour accueillir aussi les voyageurs étrangers.")
+        (dict "t" "Livret d'accueil numérique" "d" "Arrivée, Wi-Fi, règles de la maison, bonnes adresses : accessible par QR code.")
+        (dict "t" "Mentions obligatoires" "d" "Numéro d'enregistrement du meublé et informations légales à jour.")
+      }}
+      <li class="revele" style="--i:{{ mod $i 4 }}"><span class="coche" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><div><strong>{{ $c.t }}</strong><span>{{ $c.d }}</span></div></li>
+      {{- end }}
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="conteneur">
+    <header class="section__tete revele">
+      <p class="surtitre">Pour qui</p>
+      <h2>Un site pour tous les loueurs</h2>
+    </header>
+    <div class="cartes cartes--4">
+      <article class="carte revele" style="--i:0"><h3>Hôtes Airbnb et Booking</h3><p>Complétez vos annonces avec un site à votre nom et fidélisez vos voyageurs.</p></article>
+      <article class="carte revele" style="--i:1"><h3>Gîtes et chambres d'hôtes</h3><p>Une vitrine chaleureuse qui raconte votre maison et votre région.</p></article>
+      <article class="carte revele" style="--i:2"><h3>Location longue durée</h3><p>Une page complète à envoyer aux candidats locataires : moins de visites inutiles.</p></article>
+      <article class="carte revele" style="--i:3"><h3>Conciergeries</h3><p>Un modèle décliné pour chaque logement que vous gérez, à votre image.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="section section--or">
+  <div class="conteneur">
+    <header class="section__tete revele">
+      <p class="surtitre">Comment ça marche</p>
+      <h2>En ligne en quelques jours</h2>
+    </header>
+    <ol class="etapes etapes--3" role="list">
+      <li class="revele" style="--i:0"><span class="etape__num">1</span><h3>Vous nous envoyez tout</h3><p>Photos, description, équipements, règles de la maison. On vous guide avec une liste simple.</p></li>
+      <li class="revele" style="--i:1"><span class="etape__num">2</span><h3>Nous tissons le site</h3><p>Textes relus, photos optimisées, mise en page soignée. Vous validez avant la mise en ligne.</p></li>
+      <li class="revele" style="--i:2"><span class="etape__num">3</span><h3>Vous le partagez</h3><p>Un lien, un QR code pour le logement, et votre nom de domaine si vous le souhaitez.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="section">
+  <div class="conteneur duo">
+    <div class="revele">
+      <p class="surtitre">Tout-en-un pour les bailleurs</p>
+      <h2>Et pour la gestion, nos applis</h2>
+      <p>Le site attire les voyageurs et les locataires. Nos outils vous aident ensuite au quotidien :</p>
+      <ul class="liste-applis" role="list">
+        {{- range site.Data.applis }}
+        <li><strong>{{ .titre }}</strong> : {{ .accroche }} <a href="{{ .url }}" target="_blank" rel="noopener">Découvrir</a></li>
+        {{- end }}
+      </ul>
+    </div>
+    <div class="faq revele">
+      <p class="surtitre">Questions fréquentes</p>
+      <details><summary>Dois-je quitter Airbnb ou Booking ?</summary><p>Non. Le site complète vos annonces : vous gardez les plateformes pour la visibilité, et le site pour le contact direct et la fidélité.</p></details>
+      <details><summary>J'ai plusieurs logements, comment faire ?</summary><p>Chaque bien peut avoir son propre site, ou un site commun avec une page par logement. Le même modèle est décliné, ce qui réduit le coût.</p></details>
+      <details><summary>Puis-je modifier les textes et les photos ?</summary><p>Oui. Nous pouvons vous former, ou nous occuper des mises à jour pour vous.</p></details>
+      <details><summary>Et le nom de domaine ?</summary><p>Nous vous conseillons une adresse au nom du logement (par exemple le-nom-du-bien.fr). Nous nous chargeons de la configuration.</p></details>
+    </div>
+  </div>
+</section>
+
+<section id="contact-bien" class="section section--teinte contact">
+  <div class="conteneur contact__grille">
+    <div class="revele">
+      <p class="surtitre">Parlons de votre logement</p>
+      <h2>Votre bien, en ligne en quelques jours.</h2>
+      <p>Dites-nous où il se trouve, son type et ce que vous attendez du site. Nous vous répondons sous 24 h ouvrées avec un devis.</p>
+      <p class="contact__mail">{{ partial "icone.html" (dict "nom" "mail") }} <a href="mailto:{{ site.Params.email }}?subject=Site%20pour%20mon%20logement">{{ site.Params.email }}</a></p>
+    </div>
+    <div class="contact__carte revele">
+      {{ partial "mascotte.html" (dict "id" "contactbien" "pose" "ordi" "classe" "contact__mascotte") }}
+      <a class="bouton" href="mailto:{{ site.Params.email }}?subject=Site%20pour%20mon%20logement">Demander un devis {{ partial "icone.html" (dict "nom" "fleche") }}</a>
+    </div>
+  </div>
+</section>
+
+{{ end }}

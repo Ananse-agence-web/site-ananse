@@ -1,0 +1,31 @@
+{{ define "main" }}
+<article class="page article">
+  <div class="conteneur">
+    <p><a class="lien-retour" href="{{ "blog/" | relURL }}">← Tous les articles</a></p>
+    <p class="surtitre">{{ .Params.techno }}</p>
+    <h1>{{ .Title }}</h1>
+    <p class="article__chapo">{{ .Description }}</p>
+    <p class="page__maj">{{ .ReadingTime }} min de lecture</p>
+    {{ partial "vignette.html" . }}
+    <div class="article__contenu">
+      {{ .Content }}
+    </div>
+
+    <aside class="article__cta">
+      {{ partial "mascotte.html" (dict "id" "cta" "pose" "salut" "classe" "article__mascotte") }}
+      <div>
+        <p class="article__cta-titre">Un projet qui utilise cette technologie ?</p>
+        <p>Parlons-en : nous vous disons franchement si c'est le bon choix pour vous.</p>
+        <a class="bouton" href="{{ "" | relURL }}#contact">Nous contacter {{ partial "icone.html" (dict "nom" "fleche") }}</a>
+      </div>
+    </aside>
+
+    {{- with (where (where site.RegularPages "Section" "blog") "Permalink" "!=" .Permalink) | first 2 }}
+    <h2 class="article__autres">À lire aussi</h2>
+    <div class="articles articles--2">
+      {{- range . }}{{ partial "carte-article.html" . }}{{ end }}
+    </div>
+    {{- end }}
+  </div>
+</article>
+{{ end }}

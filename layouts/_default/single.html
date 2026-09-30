@@ -1,0 +1,10 @@
+{{ define "main" }}
+<article class="page">
+  <div class="conteneur">
+    <p class="surtitre">{{ with .Params.surtitre }}{{ . }}{{ else }}Informations{{ end }}</p>
+    <h1>{{ .Title }}</h1>
+    {{ with .Params.maj }}<p class="page__maj">Dernière mise à jour : {{ . }}</p>{{ end }}
+    {{ .Content }}
+  </div>
+</article>
+{{ end }}

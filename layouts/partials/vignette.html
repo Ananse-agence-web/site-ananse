@@ -1,0 +1,7 @@
+{{- /* Vignette d'article : bloc coloré avec l'icône et la techno. Paramètre : la page. */ -}}
+{{- $p := . -}}
+<div class="vignette vignette--{{ $p.Params.couleur | default "or" }}" aria-hidden="true">
+  <svg class="vignette__fils" viewBox="0 0 300 160" preserveAspectRatio="none"><path d="M0 120 Q80 60 160 110 T300 70"/><path d="M0 40 Q120 90 200 40 T300 30"/></svg>
+  <span class="vignette__icone">{{ partial "icone.html" (dict "nom" ($p.Params.icone | default "vitrine")) }}</span>
+  <span class="vignette__techno">{{ $p.Params.techno }}</span>
+</div>

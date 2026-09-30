@@ -1,0 +1,11 @@
+<article class="article-carte">
+  <a href="{{ .RelPermalink }}" class="article-carte__lien">
+    {{ partial "vignette.html" . }}
+    <div class="article-carte__corps">
+      <p class="article-carte__meta">{{ .ReadingTime }} min de lecture</p>
+      <h3>{{ .Title }}</h3>
+      <p>{{ .Description }}</p>
+      <span class="lien-fleche">Lire l'article {{ partial "icone.html" (dict "nom" "fleche") }}</span>
+    </div>
+  </a>
+</article>
