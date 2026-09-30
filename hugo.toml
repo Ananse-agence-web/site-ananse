@@ -19,7 +19,7 @@ disableKinds = ["taxonomy", "term"]
 
   # Adresse de contact officielle
   email = "Ananse.Agence.Web@gmail.com"
-  # Site de démonstration « Ce qu'on peut faire avec le static »
+  # Site de démonstration « Ce qu'on peut faire avec le web statique »
   outils = "https://tools.ananse.fr/"
   # Clé Web3Forms (https://web3forms.com, gratuite, liée à l'e-mail ci-dessus).
   # Vide = le formulaire est remplacé par un simple lien e-mail.
