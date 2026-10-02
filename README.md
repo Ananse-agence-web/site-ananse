@@ -29,4 +29,4 @@ https://www.ananse.fr/admin/ : modifier les textes, les offres, les réalisation
 
 - Configuration : `static/admin/config.yml`
 - Images des articles : `static/img/blog/`
-- Connexion GitHub : `functions/api/auth.js` et `functions/api/callback.js` (Cloudflare Pages Functions). Variables à définir dans Cloudflare Pages : `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET` (application OAuth GitHub de l'organisation, callback `https://www.ananse.fr/api/callback`).
+- Connexion GitHub : `functions/api/auth.js` et `functions/api/callback.js` (Cloudflare Pages Functions). **Service commun** : tous les sites Hugo en `*.ananse.fr` et `*.an6.fr` se connectent via `base_url: https://www.ananse.fr`. Variables à définir dans Cloudflare Pages : `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET` (application OAuth GitHub de l'organisation, callback `https://www.ananse.fr/api/callback`).

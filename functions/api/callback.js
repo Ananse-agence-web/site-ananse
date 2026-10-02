@@ -1,5 +1,8 @@
-// Connexion GitHub pour Decap CMS (/admin/) — étape 2 : échange du code contre un jeton,
-// puis transmission du jeton à la fenêtre /admin/ (même origine uniquement).
+// Connexion GitHub pour Decap CMS — étape 2 : échange du code contre un jeton,
+// puis transmission du jeton à la fenêtre du CMS.
+// Service commun à tous les sites : seuls les sites en *.ananse.fr et *.an6.fr reçoivent le jeton.
+const ORIGINES = /^https:\/\/([a-z0-9-]+\.)*(ananse\.fr|an6\.fr)$/;
+
 export async function onRequestGet({ request, env }) {
   const url = new URL(request.url);
   const code = url.searchParams.get("code");
@@ -28,12 +31,12 @@ export async function onRequestGet({ request, env }) {
   const html = `<!doctype html><meta charset="utf-8"><title>Connexion…</title><p>Connexion en cours…</p>
 <script>
   (function () {
-    var origine = ${JSON.stringify(url.origin)};
+    var autorise = new RegExp(${JSON.stringify(ORIGINES.source)});
     window.addEventListener("message", function (e) {
-      if (e.origin !== origine) return;
-      window.opener.postMessage(${JSON.stringify(message).replace(/</g, String.fromCharCode(92) + "u003c")}, origine);
+      if (!autorise.test(e.origin)) return;
+      window.opener.postMessage(${JSON.stringify(message).replace(/</g, String.fromCharCode(92) + "u003c")}, e.origin);
     }, false);
-    window.opener.postMessage("authorizing:github", origine);
+    window.opener.postMessage("authorizing:github", "*");
   })();
 </script>`;
   return new Response(html, {
