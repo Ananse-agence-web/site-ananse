@@ -1,0 +1,86 @@
+# Textes de la page d'accueil (modifiables dans /admin/, rubrique « Textes du site »)
+hero:
+  surtitre: Agence web
+  titre_debut: On tisse
+  titre_souligne: votre web
+  titre_fin: .
+  intro: Sites vitrines, applications et outils sur mesure, livrés en quelques jours plutôt qu'en quelques mois. Rapides, sans cookie, et faits pour durer.
+  bouton: Demander un devis
+  bouton2: Voir nos réalisations
+chiffres:
+  - valeur: 20 ans
+    texte: d'expérience du web
+  - valeur: Quelques jours
+    texte: pour une première version en ligne
+  - valeur: 0 cookie
+    texte: et zéro traceur sur nos sites
+offres:
+  surtitre: Ce que nous faisons
+  titre: Du site vitrine à l'outil métier
+  intro: "Chaque projet est tissé sur mesure. Pas de thème acheté, pas d'usine à gaz : juste ce qu'il vous faut."
+  lien: Parlez-nous de votre projet
+banniere_location:
+  surtitre: Location & Airbnb
+  titre: Vous louez un logement ? Offrez-lui son propre site.
+  texte: Photos, pièces, quartier, réservation en direct et livret d'accueil numérique.
+  bouton: Découvrir l'offre
+methode:
+  surtitre: Notre méthode
+  titre: Fil à fil, avec vous
+  etapes:
+    - titre: On vous écoute
+      texte: Un premier échange gratuit pour comprendre votre activité, vos clients et votre besoin.
+    - titre: On vous montre
+      texte: Une maquette cliquable avant la moindre ligne de code. Vous voyez, vous corrigez.
+    - titre: On tisse
+      texte: Le développement avance par petites étapes que vous suivez et validez en ligne.
+    - titre: On reste là
+      texte: Mise en ligne, prise en main, puis évolutions quand vous en avez besoin.
+realisations:
+  surtitre: Réalisations
+  titre: Quelques fils déjà tissés
+  intro: Des sites en ligne, que vous pouvez visiter dès maintenant.
+applis:
+  surtitre: Nos applis
+  titre: Nous éditons aussi nos propres outils
+  intro: Ce que nous construisons pour nous, nous savons le construire pour vous.
+engagements:
+  surtitre: Nos engagements
+  titre: Un web léger, rapide et respectueux
+  cartes:
+    - icone: fusee
+      titre: Rapide à livrer
+      texte: "Nous travaillons avec les meilleurs outils, IA comprise : vous gagnez des semaines."
+    - icone: eclair
+      titre: Rapide à charger
+      texte: Des pages légères qui s'affichent vite, même en 4G au fond du jardin.
+    - icone: bouclier
+      titre: Sans cookie ni traceur
+      texte: Pas de bandeau à cliquer, pas de données revendues. Vos visiteurs vous remercieront.
+    - icone: cle
+      titre: Il est à vous
+      texte: Code, contenus et accès vous sont remis. Aucune dépendance à notre agence.
+banniere_demos:
+  surtitre: Nos démos
+  titre: Ce qu'on peut faire avec un site rapide et sans souci
+  texte: "Plus de 60 fonctions à essayer en vrai : réservation, paiement, carte, jeux… Cochez ce qui vous plaît, le devis se prépare tout seul."
+  bouton: Essayer les démos
+histoire:
+  surtitre: Notre histoire
+  titre: Pourquoi « Ananse » ?
+  texte: |-
+    Dans les contes d'Afrique de l'Ouest, **Ananse l'araignée** a obtenu toutes les histoires du monde. Pas par la force, mais par l'astuce, la patience et un fil bien tissé.
+
+    C'est notre façon de travailler : de petites équipes agiles plutôt que de grosses machines, et des solutions malignes plutôt que des budgets démesurés.
+
+    Derrière Ananse, plus de **20 ans de projets web** : développement, pilotage d'équipes, recette, données… pour des acteurs comme ViaMichelin, Pixmania ou la DILA.
+blog:
+  surtitre: Le blog
+  titre: Le fil d'Ananse
+  intro: Les technologies que nous utilisons, expliquées simplement.
+  lien: Tous les articles
+contact:
+  surtitre: Contact
+  titre: Un projet ? Tissons-le ensemble.
+  texte: "Décrivez-nous votre besoin en quelques lignes : nous vous répondons sous 24 h ouvrées avec des questions, des idées et un devis."
+  bouton: Écrire à Ananse

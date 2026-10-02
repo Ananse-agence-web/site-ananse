@@ -1,0 +1,92 @@
+# Textes de la page « Location & Airbnb » (modifiables dans /admin/, rubrique « Textes du site »)
+hero:
+  surtitre: Location saisonnière & locative
+  titre_debut: Un site rien qu'à lui pour
+  titre_souligne: chaque logement
+  titre_fin: .
+  intro: "Studio, appartement, gîte ou maison de vacances : nous créons un site dédié à votre bien. De grandes photos, chaque pièce présentée, le quartier, et un contact direct avec vos futurs voyageurs ou locataires."
+  bouton: Demander un devis
+  bouton2: Ce que contient le site
+pourquoi:
+  surtitre: Pourquoi un site par logement
+  titre: Votre bien mérite mieux qu'une annonce parmi d'autres
+  intro: Les plateformes vous apportent des voyageurs. Un site à vous leur donne envie de revenir, sans passer par elles.
+  cartes:
+    - icone: cle
+      titre: Réservations en direct
+      texte: Vos anciens voyageurs et leurs amis vous contactent directement, sans commission de plateforme.
+    - icone: photo
+      titre: Un bien mis en valeur
+      texte: "De grandes photos et chaque pièce décrite : bien plus de place qu'une annonce classique."
+    - icone: loupe
+      titre: Trouvé sur Google
+      texte: Le nom de votre logement et de votre ville deviennent une page bien référencée, qui vous appartient.
+    - icone: coeur
+      titre: Une image pro
+      texte: "Un lien propre à partager partout : réseaux sociaux, e-mails, carte de visite ou QR code dans le logement."
+contenu:
+  surtitre: Ce que contient le site
+  titre: Tout ce qu'un voyageur veut savoir avant de réserver
+  points:
+    - titre: Galerie photos
+      texte: Grandes images, rapides à charger, même sur mobile.
+    - titre: Pièce par pièce
+      texte: "Séjour, cuisine, chambre, salle de bain : chaque espace décrit."
+    - titre: Équipements
+      texte: Wi-Fi, linge, parking, accessibilité… en un coup d'œil.
+    - titre: Le quartier ou le village
+      texte: "Commerces, balades, transports : ce qui rend le lieu unique."
+    - titre: Accès et plan
+      texte: Comment venir, en train ou en voiture.
+    - titre: Avis des voyageurs
+      texte: Vos meilleurs retours mis en avant.
+    - titre: Demande de réservation
+      texte: "Un formulaire simple : dates, nombre de voyageurs, message."
+    - titre: Français et anglais
+      texte: Pour accueillir aussi les voyageurs étrangers.
+    - titre: Livret d'accueil numérique
+      texte: "Arrivée, Wi-Fi, règles de la maison, bonnes adresses : accessible par QR code."
+    - titre: Mentions obligatoires
+      texte: Numéro d'enregistrement du meublé et informations légales à jour.
+pour_qui:
+  surtitre: Pour qui
+  titre: Un site pour tous les loueurs
+  cartes:
+    - titre: Hôtes Airbnb et Booking
+      texte: Complétez vos annonces avec un site à votre nom et fidélisez vos voyageurs.
+    - titre: Gîtes et chambres d'hôtes
+      texte: Une vitrine chaleureuse qui raconte votre maison et votre région.
+    - titre: Location longue durée
+      texte: "Une page complète à envoyer aux candidats locataires : moins de visites inutiles."
+    - titre: Conciergeries
+      texte: Un modèle décliné pour chaque logement que vous gérez, à votre image.
+etapes:
+  surtitre: Comment ça marche
+  titre: En ligne en quelques jours
+  liste:
+    - titre: Vous nous envoyez tout
+      texte: Photos, description, équipements, règles de la maison. On vous guide avec une liste simple.
+    - titre: Nous tissons le site
+      texte: Textes relus, photos optimisées, mise en page soignée. Vous validez avant la mise en ligne.
+    - titre: Vous le partagez
+      texte: Un lien, un QR code pour le logement, et votre nom de domaine si vous le souhaitez.
+applis:
+  surtitre: Tout-en-un pour les bailleurs
+  titre: Et pour la gestion, nos applis
+  intro: "Le site attire les voyageurs et les locataires. Nos outils vous aident ensuite au quotidien :"
+faq:
+  surtitre: Questions fréquentes
+  questions:
+    - question: Dois-je quitter Airbnb ou Booking ?
+      reponse: "Non. Le site complète vos annonces : vous gardez les plateformes pour la visibilité, et le site pour le contact direct et la fidélité."
+    - question: J'ai plusieurs logements, comment faire ?
+      reponse: Chaque bien peut avoir son propre site, ou un site commun avec une page par logement. Le même modèle est décliné, ce qui réduit le coût.
+    - question: Puis-je modifier les textes et les photos ?
+      reponse: Oui. Nous pouvons vous former, ou nous occuper des mises à jour pour vous.
+    - question: Et le nom de domaine ?
+      reponse: Nous vous conseillons une adresse au nom du logement (par exemple le-nom-du-bien.fr). Nous nous chargeons de la configuration.
+contact:
+  surtitre: Parlons de votre logement
+  titre: Votre bien, en ligne en quelques jours.
+  texte: Dites-nous où il se trouve, son type et ce que vous attendez du site. Nous vous répondons sous 24 h ouvrées avec un devis.
+  bouton: Demander un devis

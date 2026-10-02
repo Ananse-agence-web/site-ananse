@@ -1,0 +1,311 @@
+# Decap CMS — https://www.ananse.fr/admin/
+# Chaque enregistrement crée un commit sur main : Cloudflare republie le site en 1 à 2 minutes.
+backend:
+  name: github
+  repo: Ananse-agence-web/site-ananse
+  branch: main
+  base_url: https://www.ananse.fr
+  auth_endpoint: api/auth
+  commit_messages:
+    create: "CMS : nouvel article « {{slug}} »"
+    update: "CMS : mise à jour de « {{slug}} »"
+    delete: "CMS : suppression de « {{slug}} »"
+    uploadMedia: "CMS : ajout de l'image {{path}}"
+    deleteMedia: "CMS : suppression de l'image {{path}}"
+
+locale: fr
+site_url: https://www.ananse.fr
+display_url: https://www.ananse.fr
+logo_url: https://www.ananse.fr/favicon.svg
+
+media_folder: static/img/blog
+public_folder: /img/blog
+
+collections:
+  # ---------------------------------------------------------------- Blog
+  - name: blog
+    label: Articles du blog
+    label_singular: article
+    folder: content/blog
+    create: true
+    slug: "{{fields.slug}}"
+    filter: { field: techno, pattern: "." }
+    preview_path: "blog/{{slug}}/"
+    sortable_fields: [date, title]
+    summary: "{{title}} — {{date | date('DD/MM/YYYY')}}"
+    fields:
+      - { name: title, label: Titre, widget: string }
+      - { name: slug, label: "Adresse (slug)", widget: string, pattern: ["^[a-z0-9]+(-[a-z0-9]+)*$", "Minuscules, chiffres et tirets, sans accent (ex. : mon-article)"], hint: "Donne l'adresse /blog/mon-article/. Ne plus la changer une fois publiée." }
+      - { name: date, label: Date, widget: datetime, format: "YYYY-MM-DDTHH:mm:ssZ" }
+      - { name: description, label: "Résumé (Google et cartes d'articles)", widget: text, hint: "150 caractères environ." }
+      - { name: techno, label: "Étiquette de la vignette", widget: string, hint: "Ex. : Hugo, PWA, SEO" }
+      - { name: icone, label: "Icône de la vignette", widget: select, default: vitrine, options: [vitrine, appli, outil, pilote, eclair, fusee, bouclier, cle, photo, loupe, coeur, hugo, pwa, headless, api, mail] }
+      - { name: couleur, label: "Couleur de la vignette", widget: select, default: or, options: [or, vert, rose, terre] }
+      - { name: draft, label: "Brouillon (non publié)", widget: boolean, default: false, required: false }
+      - { name: body, label: Article, widget: markdown }
+
+  # ---------------------------------------------------------------- Textes
+  - name: textes
+    label: Textes du site
+    editor: { preview: false }
+    files:
+      - name: accueil
+        label: Page d'accueil
+        file: data/accueil.yaml
+        fields:
+          - name: hero
+            label: "En-tête"
+            widget: object
+            fields:
+              - { name: surtitre, label: Surtitre, widget: string }
+              - { name: titre_debut, label: "Titre (début)", widget: string }
+              - { name: titre_souligne, label: "Titre (partie soulignée)", widget: string }
+              - { name: titre_fin, label: "Titre (fin)", widget: string, required: false }
+              - { name: intro, label: Introduction, widget: text }
+              - { name: bouton, label: "Bouton principal", widget: string }
+              - { name: bouton2, label: "Bouton secondaire", widget: string }
+          - name: chiffres
+            label: Chiffres clés
+            widget: list
+            summary: "{{valeur}} {{texte}}"
+            fields:
+              - { name: valeur, label: Chiffre, widget: string }
+              - { name: texte, label: Texte, widget: string }
+          - name: offres
+            label: "Section « Offres » (les cartes sont dans « Offres »)"
+            widget: object
+            fields:
+              - { name: surtitre, label: Surtitre, widget: string }
+              - { name: titre, label: Titre, widget: string }
+              - { name: intro, label: Introduction, widget: text }
+              - { name: lien, label: "Lien sous les cartes", widget: string }
+          - name: banniere_location
+            label: "Bannière « Location & Airbnb »"
+            widget: object
+            fields:
+              - { name: surtitre, label: Surtitre, widget: string }
+              - { name: titre, label: Titre, widget: string }
+              - { name: texte, label: Texte, widget: text }
+              - { name: bouton, label: Bouton, widget: string }
+          - name: methode
+            label: "Section « Méthode »"
+            widget: object
+            fields:
+              - { name: surtitre, label: Surtitre, widget: string }
+              - { name: titre, label: Titre, widget: string }
+              - name: etapes
+                label: Étapes
+                widget: list
+                summary: "{{titre}}"
+                fields:
+                  - { name: titre, label: Titre, widget: string }
+                  - { name: texte, label: Texte, widget: text }
+          - name: realisations
+            label: "Section « Réalisations » (les sites sont dans « Réalisations »)"
+            widget: object
+            fields:
+              - { name: surtitre, label: Surtitre, widget: string }
+              - { name: titre, label: Titre, widget: string }
+              - { name: intro, label: Introduction, widget: text }
+          - name: applis
+            label: "Section « Nos applis » (les applis sont dans « Nos applis »)"
+            widget: object
+            fields:
+              - { name: surtitre, label: Surtitre, widget: string }
+              - { name: titre, label: Titre, widget: string }
+              - { name: intro, label: Introduction, widget: text }
+          - name: engagements
+            label: "Section « Engagements »"
+            widget: object
+            fields:
+              - { name: surtitre, label: Surtitre, widget: string }
+              - { name: titre, label: Titre, widget: string }
+              - name: cartes
+                label: Cartes
+                widget: list
+                summary: "{{titre}}"
+                fields:
+                  - { name: icone, label: Icône, widget: select, options: [vitrine, appli, outil, pilote, eclair, fusee, bouclier, cle, photo, loupe, coeur, hugo, pwa, headless, api, mail] }
+                  - { name: titre, label: Titre, widget: string }
+                  - { name: texte, label: Texte, widget: text }
+          - name: banniere_demos
+            label: "Bannière « Démos »"
+            widget: object
+            fields:
+              - { name: surtitre, label: Surtitre, widget: string }
+              - { name: titre, label: Titre, widget: string }
+              - { name: texte, label: Texte, widget: text }
+              - { name: bouton, label: Bouton, widget: string }
+          - name: histoire
+            label: "Section « Notre histoire »"
+            widget: object
+            fields:
+              - { name: surtitre, label: Surtitre, widget: string }
+              - { name: titre, label: Titre, widget: string }
+              - { name: texte, label: Texte, widget: markdown, buttons: [bold, italic, link], editor_components: [] }
+          - name: blog
+            label: "Section « Blog »"
+            widget: object
+            fields:
+              - { name: surtitre, label: Surtitre, widget: string }
+              - { name: titre, label: Titre, widget: string }
+              - { name: intro, label: Introduction, widget: text }
+              - { name: lien, label: "Lien « tous les articles »", widget: string }
+          - name: contact
+            label: "Section « Contact »"
+            widget: object
+            fields:
+              - { name: surtitre, label: Surtitre, widget: string }
+              - { name: titre, label: Titre, widget: string }
+              - { name: texte, label: Texte, widget: text }
+              - { name: bouton, label: Bouton, widget: string }
+
+      - name: immobilier
+        label: "Page « Location & Airbnb »"
+        file: data/immobilier.yaml
+        fields:
+          - name: hero
+            label: "En-tête"
+            widget: object
+            fields:
+              - { name: surtitre, label: Surtitre, widget: string }
+              - { name: titre_debut, label: "Titre (début)", widget: string }
+              - { name: titre_souligne, label: "Titre (partie soulignée)", widget: string }
+              - { name: titre_fin, label: "Titre (fin)", widget: string, required: false }
+              - { name: intro, label: Introduction, widget: text }
+              - { name: bouton, label: "Bouton principal", widget: string }
+              - { name: bouton2, label: "Bouton secondaire", widget: string }
+          - name: pourquoi
+            label: "Section « Pourquoi »"
+            widget: object
+            fields:
+              - { name: surtitre, label: Surtitre, widget: string }
+              - { name: titre, label: Titre, widget: string }
+              - { name: intro, label: Introduction, widget: text }
+              - name: cartes
+                label: Cartes
+                widget: list
+                summary: "{{titre}}"
+                fields:
+                  - { name: icone, label: Icône, widget: select, options: [vitrine, appli, outil, pilote, eclair, fusee, bouclier, cle, photo, loupe, coeur, hugo, pwa, headless, api, mail] }
+                  - { name: titre, label: Titre, widget: string }
+                  - { name: texte, label: Texte, widget: text }
+          - name: contenu
+            label: "Section « Ce que contient le site »"
+            widget: object
+            fields:
+              - { name: surtitre, label: Surtitre, widget: string }
+              - { name: titre, label: Titre, widget: string }
+              - name: points
+                label: Points
+                widget: list
+                summary: "{{titre}}"
+                fields:
+                  - { name: titre, label: Titre, widget: string }
+                  - { name: texte, label: Texte, widget: string }
+          - name: pour_qui
+            label: "Section « Pour qui »"
+            widget: object
+            fields:
+              - { name: surtitre, label: Surtitre, widget: string }
+              - { name: titre, label: Titre, widget: string }
+              - name: cartes
+                label: Cartes
+                widget: list
+                summary: "{{titre}}"
+                fields:
+                  - { name: titre, label: Titre, widget: string }
+                  - { name: texte, label: Texte, widget: text }
+          - name: etapes
+            label: "Section « Comment ça marche »"
+            widget: object
+            fields:
+              - { name: surtitre, label: Surtitre, widget: string }
+              - { name: titre, label: Titre, widget: string }
+              - name: liste
+                label: Étapes
+                widget: list
+                summary: "{{titre}}"
+                fields:
+                  - { name: titre, label: Titre, widget: string }
+                  - { name: texte, label: Texte, widget: text }
+          - name: applis
+            label: "Section « Nos applis »"
+            widget: object
+            fields:
+              - { name: surtitre, label: Surtitre, widget: string }
+              - { name: titre, label: Titre, widget: string }
+              - { name: intro, label: Introduction, widget: text }
+          - name: faq
+            label: Questions fréquentes
+            widget: object
+            fields:
+              - { name: surtitre, label: Surtitre, widget: string }
+              - name: questions
+                label: Questions
+                widget: list
+                summary: "{{question}}"
+                fields:
+                  - { name: question, label: Question, widget: string }
+                  - { name: reponse, label: Réponse, widget: text }
+          - name: contact
+            label: "Section « Contact »"
+            widget: object
+            fields:
+              - { name: surtitre, label: Surtitre, widget: string }
+              - { name: titre, label: Titre, widget: string }
+              - { name: texte, label: Texte, widget: text }
+              - { name: bouton, label: Bouton, widget: string }
+
+      - name: offres
+        label: Offres (cartes de l'accueil)
+        file: data/offres.yaml
+        fields:
+          - name: offres
+            label: Offres
+            widget: list
+            summary: "{{titre}}"
+            fields:
+              - { name: titre, label: Titre, widget: string }
+              - { name: icone, label: Icône, widget: select, options: [vitrine, appli, outil, pilote, eclair, fusee, bouclier, cle, photo, loupe, coeur, hugo, pwa, headless, api, mail] }
+              - { name: texte, label: Texte, widget: text }
+
+      - name: realisations
+        label: Réalisations (portfolio)
+        file: data/realisations.yaml
+        fields:
+          - name: realisations
+            label: Réalisations
+            widget: list
+            summary: "{{titre}}"
+            fields:
+              - { name: titre, label: Titre, widget: string }
+              - { name: image, label: "Capture (1280×800)", widget: image, media_folder: /static/img/realisations, public_folder: /img/realisations }
+              - { name: url, label: "Adresse du site", widget: string }
+              - { name: type, label: Type, widget: string }
+              - { name: texte, label: Texte, widget: text }
+              - { name: tags, label: "Étiquettes (séparées par des virgules)", widget: list }
+
+      - name: applis
+        label: Nos applis
+        file: data/applis.yaml
+        fields:
+          - name: applis
+            label: Applis
+            widget: list
+            summary: "{{titre}}"
+            fields:
+              - { name: titre, label: Titre, widget: string }
+              - { name: pose, label: "Pose de la mascotte", widget: select, options: [salut, ordi, loupe, telephone] }
+              - { name: accroche, label: Accroche, widget: string }
+              - { name: texte, label: Texte, widget: text }
+              - { name: pour, label: "Pour qui", widget: string }
+              - { name: url, label: Adresse, widget: string }
+
+  # ---------------------------------------------------------------- Légal
+  - name: legal
+    label: Pages légales
+    files:
+      - { name: mentions, label: Mentions légales, file: content/mentions-legales.md, fields: &legal [ { name: title, label: Titre, widget: string }, { name: surtitre, label: Surtitre, widget: string }, { name: maj, label: "Mise à jour le", widget: string }, { name: body, label: Texte, widget: markdown } ] }
+      - { name: cgv, label: Conditions générales de vente, file: content/cgv.md, fields: *legal }
+      - { name: confidentialite, label: Politique de confidentialité, file: content/confidentialite.md, fields: *legal }

@@ -1,4 +1,5 @@
 {{ define "main" }}
+{{- $t := site.Data.immobilier }}
 
 <section class="hero hero--page">
   <svg class="fils fils--hero" viewBox="0 0 1200 600" preserveAspectRatio="none" aria-hidden="true">
@@ -6,12 +7,12 @@
   </svg>
   <div class="conteneur hero__grille">
     <div class="hero__texte">
-      <p class="surtitre">Location saisonnière & locative</p>
-      <h1>Un site rien qu'à lui pour <span class="souligne">chaque logement</span>.</h1>
-      <p class="hero__intro">Studio, appartement, gîte ou maison de vacances : nous créons un site dédié à votre bien. De grandes photos, chaque pièce présentée, le quartier, et un contact direct avec vos futurs voyageurs ou locataires.</p>
+      <p class="surtitre">{{ $t.hero.surtitre }}</p>
+      <h1>{{ $t.hero.titre_debut }} <span class="souligne">{{ $t.hero.titre_souligne }}</span>{{ $t.hero.titre_fin }}</h1>
+      <p class="hero__intro">{{ $t.hero.intro }}</p>
       <div class="hero__actions">
-        <a class="bouton" href="#contact-bien">Demander un devis {{ partial "icone.html" (dict "nom" "fleche") }}</a>
-        <a class="bouton bouton--contour" href="#contenu-site">Ce que contient le site</a>
+        <a class="bouton" href="#contact-bien">{{ $t.hero.bouton }} {{ partial "icone.html" (dict "nom" "fleche") }}</a>
+        <a class="bouton bouton--contour" href="#contenu-site">{{ $t.hero.bouton2 }}</a>
       </div>
     </div>
 
@@ -68,15 +69,14 @@
 <section class="section">
   <div class="conteneur">
     <header class="section__tete revele">
-      <p class="surtitre">Pourquoi un site par logement</p>
-      <h2>Votre bien mérite mieux qu'une annonce parmi d'autres</h2>
-      <p>Les plateformes vous apportent des voyageurs. Un site à vous leur donne envie de revenir, sans passer par elles.</p>
+      <p class="surtitre">{{ $t.pourquoi.surtitre }}</p>
+      <h2>{{ $t.pourquoi.titre }}</h2>
+      <p>{{ $t.pourquoi.intro }}</p>
     </header>
     <div class="cartes cartes--4">
-      <article class="carte revele" style="--i:0"><span class="carte__icone">{{ partial "icone.html" (dict "nom" "cle") }}</span><h3>Réservations en direct</h3><p>Vos anciens voyageurs et leurs amis vous contactent directement, sans commission de plateforme.</p></article>
-      <article class="carte revele" style="--i:1"><span class="carte__icone">{{ partial "icone.html" (dict "nom" "photo") }}</span><h3>Un bien mis en valeur</h3><p>De grandes photos et chaque pièce décrite : bien plus de place qu'une annonce classique.</p></article>
-      <article class="carte revele" style="--i:2"><span class="carte__icone">{{ partial "icone.html" (dict "nom" "loupe") }}</span><h3>Trouvé sur Google</h3><p>Le nom de votre logement et de votre ville deviennent une page bien référencée, qui vous appartient.</p></article>
-      <article class="carte revele" style="--i:3"><span class="carte__icone">{{ partial "icone.html" (dict "nom" "coeur") }}</span><h3>Une image pro</h3><p>Un lien propre à partager partout : réseaux sociaux, e-mails, carte de visite ou QR code dans le logement.</p></article>
+      {{- range $i, $c := $t.pourquoi.cartes }}
+      <article class="carte revele" style="--i:{{ $i }}"><span class="carte__icone">{{ partial "icone.html" (dict "nom" $c.icone) }}</span><h3>{{ $c.titre }}</h3><p>{{ $c.texte }}</p></article>
+      {{- end }}
     </div>
   </div>
 </section>
@@ -84,23 +84,12 @@
 <section id="contenu-site" class="section section--teinte">
   <div class="conteneur">
     <header class="section__tete revele">
-      <p class="surtitre">Ce que contient le site</p>
-      <h2>Tout ce qu'un voyageur veut savoir avant de réserver</h2>
+      <p class="surtitre">{{ $t.contenu.surtitre }}</p>
+      <h2>{{ $t.contenu.titre }}</h2>
     </header>
     <ul class="coches" role="list">
-      {{- range $i, $c := slice
-        (dict "t" "Galerie photos" "d" "Grandes images, rapides à charger, même sur mobile.")
-        (dict "t" "Pièce par pièce" "d" "Séjour, cuisine, chambre, salle de bain : chaque espace décrit.")
-        (dict "t" "Équipements" "d" "Wi-Fi, linge, parking, accessibilité… en un coup d'œil.")
-        (dict "t" "Le quartier ou le village" "d" "Commerces, balades, transports : ce qui rend le lieu unique.")
-        (dict "t" "Accès et plan" "d" "Comment venir, en train ou en voiture.")
-        (dict "t" "Avis des voyageurs" "d" "Vos meilleurs retours mis en avant.")
-        (dict "t" "Demande de réservation" "d" "Un formulaire simple : dates, nombre de voyageurs, message.")
-        (dict "t" "Français et anglais" "d" "Pour accueillir aussi les voyageurs étrangers.")
-        (dict "t" "Livret d'accueil numérique" "d" "Arrivée, Wi-Fi, règles de la maison, bonnes adresses : accessible par QR code.")
-        (dict "t" "Mentions obligatoires" "d" "Numéro d'enregistrement du meublé et informations légales à jour.")
-      }}
-      <li class="revele" style="--i:{{ mod $i 4 }}"><span class="coche" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><div><strong>{{ $c.t }}</strong><span>{{ $c.d }}</span></div></li>
+      {{- range $i, $c := $t.contenu.points }}
+      <li class="revele" style="--i:{{ mod $i 4 }}"><span class="coche" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><div><strong>{{ $c.titre }}</strong><span>{{ $c.texte }}</span></div></li>
       {{- end }}
     </ul>
   </div>
@@ -109,14 +98,13 @@
 <section class="section">
   <div class="conteneur">
     <header class="section__tete revele">
-      <p class="surtitre">Pour qui</p>
-      <h2>Un site pour tous les loueurs</h2>
+      <p class="surtitre">{{ $t.pour_qui.surtitre }}</p>
+      <h2>{{ $t.pour_qui.titre }}</h2>
     </header>
     <div class="cartes cartes--4">
-      <article class="carte revele" style="--i:0"><h3>Hôtes Airbnb et Booking</h3><p>Complétez vos annonces avec un site à votre nom et fidélisez vos voyageurs.</p></article>
-      <article class="carte revele" style="--i:1"><h3>Gîtes et chambres d'hôtes</h3><p>Une vitrine chaleureuse qui raconte votre maison et votre région.</p></article>
-      <article class="carte revele" style="--i:2"><h3>Location longue durée</h3><p>Une page complète à envoyer aux candidats locataires : moins de visites inutiles.</p></article>
-      <article class="carte revele" style="--i:3"><h3>Conciergeries</h3><p>Un modèle décliné pour chaque logement que vous gérez, à votre image.</p></article>
+      {{- range $i, $c := $t.pour_qui.cartes }}
+      <article class="carte revele" style="--i:{{ $i }}"><h3>{{ $c.titre }}</h3><p>{{ $c.texte }}</p></article>
+      {{- end }}
     </div>
   </div>
 </section>
@@ -124,13 +112,13 @@
 <section class="section section--or">
   <div class="conteneur">
     <header class="section__tete revele">
-      <p class="surtitre">Comment ça marche</p>
-      <h2>En ligne en quelques jours</h2>
+      <p class="surtitre">{{ $t.etapes.surtitre }}</p>
+      <h2>{{ $t.etapes.titre }}</h2>
     </header>
     <ol class="etapes etapes--3" role="list">
-      <li class="revele" style="--i:0"><span class="etape__num">1</span><h3>Vous nous envoyez tout</h3><p>Photos, description, équipements, règles de la maison. On vous guide avec une liste simple.</p></li>
-      <li class="revele" style="--i:1"><span class="etape__num">2</span><h3>Nous tissons le site</h3><p>Textes relus, photos optimisées, mise en page soignée. Vous validez avant la mise en ligne.</p></li>
-      <li class="revele" style="--i:2"><span class="etape__num">3</span><h3>Vous le partagez</h3><p>Un lien, un QR code pour le logement, et votre nom de domaine si vous le souhaitez.</p></li>
+      {{- range $i, $e := $t.etapes.liste }}
+      <li class="revele" style="--i:{{ $i }}"><span class="etape__num">{{ add $i 1 }}</span><h3>{{ $e.titre }}</h3><p>{{ $e.texte }}</p></li>
+      {{- end }}
     </ol>
   </div>
 </section>
@@ -138,21 +126,20 @@
 <section class="section">
   <div class="conteneur duo">
     <div class="revele">
-      <p class="surtitre">Tout-en-un pour les bailleurs</p>
-      <h2>Et pour la gestion, nos applis</h2>
-      <p>Le site attire les voyageurs et les locataires. Nos outils vous aident ensuite au quotidien :</p>
+      <p class="surtitre">{{ $t.applis.surtitre }}</p>
+      <h2>{{ $t.applis.titre }}</h2>
+      <p>{{ $t.applis.intro }}</p>
       <ul class="liste-applis" role="list">
-        {{- range site.Data.applis }}
+        {{- range site.Data.applis.applis }}
         <li><strong>{{ .titre }}</strong> : {{ .accroche }} <a href="{{ .url }}" target="_blank" rel="noopener">Découvrir</a></li>
         {{- end }}
       </ul>
     </div>
     <div class="faq revele">
-      <p class="surtitre">Questions fréquentes</p>
-      <details><summary>Dois-je quitter Airbnb ou Booking ?</summary><p>Non. Le site complète vos annonces : vous gardez les plateformes pour la visibilité, et le site pour le contact direct et la fidélité.</p></details>
-      <details><summary>J'ai plusieurs logements, comment faire ?</summary><p>Chaque bien peut avoir son propre site, ou un site commun avec une page par logement. Le même modèle est décliné, ce qui réduit le coût.</p></details>
-      <details><summary>Puis-je modifier les textes et les photos ?</summary><p>Oui. Nous pouvons vous former, ou nous occuper des mises à jour pour vous.</p></details>
-      <details><summary>Et le nom de domaine ?</summary><p>Nous vous conseillons une adresse au nom du logement (par exemple le-nom-du-bien.fr). Nous nous chargeons de la configuration.</p></details>
+      <p class="surtitre">{{ $t.faq.surtitre }}</p>
+      {{- range $t.faq.questions }}
+      <details><summary>{{ .question }}</summary><p>{{ .reponse }}</p></details>
+      {{- end }}
     </div>
   </div>
 </section>
@@ -160,14 +147,14 @@
 <section id="contact-bien" class="section section--teinte contact">
   <div class="conteneur contact__grille">
     <div class="revele">
-      <p class="surtitre">Parlons de votre logement</p>
-      <h2>Votre bien, en ligne en quelques jours.</h2>
-      <p>Dites-nous où il se trouve, son type et ce que vous attendez du site. Nous vous répondons sous 24 h ouvrées avec un devis.</p>
+      <p class="surtitre">{{ $t.contact.surtitre }}</p>
+      <h2>{{ $t.contact.titre }}</h2>
+      <p>{{ $t.contact.texte }}</p>
       <p class="contact__mail">{{ partial "icone.html" (dict "nom" "mail") }} <a href="mailto:{{ site.Params.email }}?subject=Site%20pour%20mon%20logement">{{ site.Params.email }}</a></p>
     </div>
     <div class="contact__carte revele">
       {{ partial "mascotte.html" (dict "id" "contactbien" "pose" "ordi" "classe" "contact__mascotte") }}
-      <a class="bouton" href="mailto:{{ site.Params.email }}?subject=Site%20pour%20mon%20logement">Demander un devis {{ partial "icone.html" (dict "nom" "fleche") }}</a>
+      <a class="bouton" href="mailto:{{ site.Params.email }}?subject=Site%20pour%20mon%20logement">{{ $t.contact.bouton }} {{ partial "icone.html" (dict "nom" "fleche") }}</a>
     </div>
   </div>
 </section>

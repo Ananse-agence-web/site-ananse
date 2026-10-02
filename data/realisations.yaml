@@ -1,14 +1,15 @@
 # Portfolio : uniquement les sites de présentation des applis immobilières.
 # Capture : static/img/realisations/<image> (1280×800), générée par capture.mjs
-- titre: État des lieux Offline
-  image: etat-des-lieux-offline.jpg
-  url: https://etat-des-lieux.ananse.fr/
-  type: Site vitrine + blog
-  texte: Site de présentation et de vente d'une application d'états des lieux, avec blog pour le référencement. Zéro cookie, zéro traceur.
-  tags: [Hugo, SEO, Blog]
-- titre: Quittance Tranquille
-  image: quittance-tranquille-decouvrir.jpg
-  url: https://quittance.ananse.fr/
-  type: Page de présentation
-  texte: Page de découverte d'un générateur de quittances de loyer, avec vidéo de démonstration et explication pas à pas.
-  tags: [Landing page, Vidéo]
+realisations:
+  - titre: État des lieux Offline
+    image: etat-des-lieux-offline.jpg
+    url: https://etat-des-lieux.ananse.fr/
+    type: Site vitrine + blog
+    texte: Site de présentation et de vente d'une application d'états des lieux, avec blog pour le référencement. Zéro cookie, zéro traceur.
+    tags: [Hugo, SEO, Blog]
+  - titre: Quittance Tranquille
+    image: quittance-tranquille-decouvrir.jpg
+    url: https://quittance.ananse.fr/
+    type: Page de présentation
+    texte: Page de découverte d'un générateur de quittances de loyer, avec vidéo de démonstration et explication pas à pas.
+    tags: [Landing page, Vidéo]

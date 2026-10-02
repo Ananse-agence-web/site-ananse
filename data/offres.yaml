@@ -1,13 +1,14 @@
 # Offres affichées sur l'accueil (pas de prix : tout passe par un devis)
-- titre: Sites vitrines
-  icone: vitrine
-  texte: Un site clair et rapide pour présenter votre activité et être trouvé sur Google. Sans cookie, sans abonnement caché.
-- titre: Applications web
-  icone: appli
-  texte: Des applis qui s'installent sur le téléphone et marchent même sans réseau, comme nos propres produits.
-- titre: Outils sur mesure
-  icone: outil
-  texte: Générateurs de documents, formulaires, tableaux de bord… On automatise ce qui vous fait perdre du temps.
-- titre: Accompagnement
-  icone: pilote
-  texte: Cahier des charges, pilotage de prestataires, recette et tests. Un chef de projet web expérimenté à vos côtés.
+offres:
+  - titre: Sites vitrines
+    icone: vitrine
+    texte: Un site clair et rapide pour présenter votre activité et être trouvé sur Google. Sans cookie, sans abonnement caché.
+  - titre: Applications web
+    icone: appli
+    texte: Des applis qui s'installent sur le téléphone et marchent même sans réseau, comme nos propres produits.
+  - titre: Outils sur mesure
+    icone: outil
+    texte: Générateurs de documents, formulaires, tableaux de bord… On automatise ce qui vous fait perdre du temps.
+  - titre: Accompagnement
+    icone: pilote
+    texte: Cahier des charges, pilotage de prestataires, recette et tests. Un chef de projet web expérimenté à vos côtés.

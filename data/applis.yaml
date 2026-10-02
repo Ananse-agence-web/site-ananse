@@ -1,13 +1,14 @@
 # Produits édités par Ananse
-- titre: État des lieux Offline
-  pose: telephone
-  accroche: L'état des lieux dans votre poche.
-  texte: États des lieux d'entrée et de sortie sur téléphone, photos, signature et rapport PDF. Fonctionne sans réseau, et aucune donnée n'est envoyée sur un serveur.
-  pour: Bailleurs, agences, conciergeries
-  url: https://etat-des-lieux.ananse.fr/
-- titre: Quittance Tranquille
-  pose: ordi
-  accroche: Vos quittances de loyer en deux clics.
-  texte: Générateur gratuit de quittances de loyer, 100 % dans le navigateur. Rien n'est stocké ailleurs que chez vous.
-  pour: Propriétaires bailleurs
-  url: https://quittance.ananse.fr/
+applis:
+  - titre: État des lieux Offline
+    pose: telephone
+    accroche: L'état des lieux dans votre poche.
+    texte: États des lieux d'entrée et de sortie sur téléphone, photos, signature et rapport PDF. Fonctionne sans réseau, et aucune donnée n'est envoyée sur un serveur.
+    pour: Bailleurs, agences, conciergeries
+    url: https://etat-des-lieux.ananse.fr/
+  - titre: Quittance Tranquille
+    pose: ordi
+    accroche: Vos quittances de loyer en deux clics.
+    texte: Générateur gratuit de quittances de loyer, 100 % dans le navigateur. Rien n'est stocké ailleurs que chez vous.
+    pour: Propriétaires bailleurs
+    url: https://quittance.ananse.fr/

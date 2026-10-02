@@ -1,4 +1,5 @@
 {{ define "main" }}
+{{- $t := site.Data.accueil }}
 
 <section class="hero">
   <svg class="fils fils--hero" viewBox="0 0 1200 600" preserveAspectRatio="none" aria-hidden="true">
@@ -7,12 +8,12 @@
   </svg>
   <div class="conteneur hero__grille">
     <div class="hero__texte">
-      <p class="surtitre">Agence web</p>
-      <h1>On tisse <span class="souligne">votre web</span>.</h1>
-      <p class="hero__intro">Sites vitrines, applications et outils sur mesure, livrés en quelques jours plutôt qu'en quelques mois. Rapides, sans cookie, et faits pour durer.</p>
+      <p class="surtitre">{{ $t.hero.surtitre }}</p>
+      <h1>{{ $t.hero.titre_debut }} <span class="souligne">{{ $t.hero.titre_souligne }}</span>{{ $t.hero.titre_fin }}</h1>
+      <p class="hero__intro">{{ $t.hero.intro }}</p>
       <div class="hero__actions">
-        <a class="bouton" href="#contact">Demander un devis {{ partial "icone.html" (dict "nom" "fleche") }}</a>
-        <a class="bouton bouton--contour" href="#realisations">Voir nos réalisations</a>
+        <a class="bouton" href="#contact">{{ $t.hero.bouton }} {{ partial "icone.html" (dict "nom" "fleche") }}</a>
+        <a class="bouton bouton--contour" href="#realisations">{{ $t.hero.bouton2 }}</a>
       </div>
     </div>
 
@@ -37,21 +38,21 @@
   </div>
 
   <ul class="conteneur chiffres" role="list">
-    <li><strong>20 ans</strong><span>d'expérience du web</span></li>
-    <li><strong>Quelques jours</strong><span>pour une première version en ligne</span></li>
-    <li><strong>0 cookie</strong><span>et zéro traceur sur nos sites</span></li>
+    {{- range $t.chiffres }}
+    <li><strong>{{ .valeur }}</strong><span>{{ .texte }}</span></li>
+    {{- end }}
   </ul>
 </section>
 
 <section id="offres" class="section">
   <div class="conteneur">
     <header class="section__tete revele">
-      <p class="surtitre">Ce que nous faisons</p>
-      <h2>Du site vitrine à l'outil métier</h2>
-      <p>Chaque projet est tissé sur mesure. Pas de thème acheté, pas d'usine à gaz : juste ce qu'il vous faut.</p>
+      <p class="surtitre">{{ $t.offres.surtitre }}</p>
+      <h2>{{ $t.offres.titre }}</h2>
+      <p>{{ $t.offres.intro }}</p>
     </header>
     <div class="cartes cartes--4">
-      {{- range $i, $o := site.Data.offres }}
+      {{- range $i, $o := site.Data.offres.offres }}
       <article class="carte revele" style="--i:{{ $i }}">
         <span class="carte__icone">{{ partial "icone.html" (dict "nom" $o.icone) }}</span>
         <h3>{{ $o.titre }}</h3>
@@ -59,7 +60,7 @@
       </article>
       {{- end }}
     </div>
-    <p class="centre revele"><a class="lien-fleche" href="#contact">Parlez-nous de votre projet {{ partial "icone.html" (dict "nom" "fleche") }}</a></p>
+    <p class="centre revele"><a class="lien-fleche" href="#contact">{{ $t.offres.lien }} {{ partial "icone.html" (dict "nom" "fleche") }}</a></p>
   </div>
 </section>
 
@@ -68,11 +69,11 @@
     <a class="banniere revele" href="{{ "immobilier-locatif/" | relURL }}">
       {{ partial "mascotte.html" (dict "id" "banniere" "pose" "telephone" "classe" "banniere__mascotte") }}
       <div>
-        <p class="surtitre">Location & Airbnb</p>
-        <p class="banniere__titre">Vous louez un logement ? Offrez-lui son propre site.</p>
-        <p>Photos, pièces, quartier, réservation en direct et livret d'accueil numérique.</p>
+        <p class="surtitre">{{ $t.banniere_location.surtitre }}</p>
+        <p class="banniere__titre">{{ $t.banniere_location.titre }}</p>
+        <p>{{ $t.banniere_location.texte }}</p>
       </div>
-      <span class="bouton">Découvrir l'offre {{ partial "icone.html" (dict "nom" "fleche") }}</span>
+      <span class="bouton">{{ $t.banniere_location.bouton }} {{ partial "icone.html" (dict "nom" "fleche") }}</span>
     </a>
   </div>
 </section>
@@ -80,14 +81,13 @@
 <section id="methode" class="section section--teinte">
   <div class="conteneur">
     <header class="section__tete revele">
-      <p class="surtitre">Notre méthode</p>
-      <h2>Fil à fil, avec vous</h2>
+      <p class="surtitre">{{ $t.methode.surtitre }}</p>
+      <h2>{{ $t.methode.titre }}</h2>
     </header>
     <ol class="etapes" role="list">
-      <li class="revele" style="--i:0"><span class="etape__num">1</span><h3>On vous écoute</h3><p>Un premier échange gratuit pour comprendre votre activité, vos clients et votre besoin.</p></li>
-      <li class="revele" style="--i:1"><span class="etape__num">2</span><h3>On vous montre</h3><p>Une maquette cliquable avant la moindre ligne de code. Vous voyez, vous corrigez.</p></li>
-      <li class="revele" style="--i:2"><span class="etape__num">3</span><h3>On tisse</h3><p>Le développement avance par petites étapes que vous suivez et validez en ligne.</p></li>
-      <li class="revele" style="--i:3"><span class="etape__num">4</span><h3>On reste là</h3><p>Mise en ligne, prise en main, puis évolutions quand vous en avez besoin.</p></li>
+      {{- range $i, $e := $t.methode.etapes }}
+      <li class="revele" style="--i:{{ $i }}"><span class="etape__num">{{ add $i 1 }}</span><h3>{{ $e.titre }}</h3><p>{{ $e.texte }}</p></li>
+      {{- end }}
     </ol>
   </div>
 </section>
@@ -95,16 +95,16 @@
 <section id="realisations" class="section">
   <div class="conteneur">
     <header class="section__tete revele">
-      <p class="surtitre">Réalisations</p>
-      <h2>Quelques fils déjà tissés</h2>
-      <p>Des sites en ligne, que vous pouvez visiter dès maintenant.</p>
+      <p class="surtitre">{{ $t.realisations.surtitre }}</p>
+      <h2>{{ $t.realisations.titre }}</h2>
+      <p>{{ $t.realisations.intro }}</p>
     </header>
     <div class="realisations">
-      {{- range $i, $r := site.Data.realisations }}
+      {{- range $i, $r := site.Data.realisations.realisations }}
       <article class="realisation revele" style="--i:{{ $i }}">
         <a class="realisation__capture" href="{{ $r.url }}" target="_blank" rel="noopener">
           <span class="realisation__barre" aria-hidden="true"><i></i><i></i><i></i></span>
-          <img src="{{ printf "img/realisations/%s" $r.image | relURL }}" alt="Page d'accueil du site {{ $r.titre }}" width="1280" height="800" loading="lazy">
+          <img src="{{ printf "img/realisations/%s" (path.Base $r.image) | relURL }}" alt="Page d'accueil du site {{ $r.titre }}" width="1280" height="800" loading="lazy">
         </a>
         <div class="realisation__texte">
           <p class="realisation__type">{{ $r.type }}</p>
@@ -125,12 +125,12 @@
   </svg>
   <div class="conteneur">
     <header class="section__tete revele">
-      <p class="surtitre">Nos applis</p>
-      <h2>Nous éditons aussi nos propres outils</h2>
-      <p>Ce que nous construisons pour nous, nous savons le construire pour vous.</p>
+      <p class="surtitre">{{ $t.applis.surtitre }}</p>
+      <h2>{{ $t.applis.titre }}</h2>
+      <p>{{ $t.applis.intro }}</p>
     </header>
     <div class="applis">
-      {{- range $i, $a := site.Data.applis }}
+      {{- range $i, $a := site.Data.applis.applis }}
       <article class="appli revele" style="--i:{{ $i }}">
         {{ partial "mascotte.html" (dict "id" (printf "appli%d" $i) "pose" $a.pose "classe" "appli__mascotte") }}
         <div>
@@ -149,14 +149,13 @@
 <section class="section">
   <div class="conteneur">
     <header class="section__tete revele">
-      <p class="surtitre">Nos engagements</p>
-      <h2>Un web léger, rapide et respectueux</h2>
+      <p class="surtitre">{{ $t.engagements.surtitre }}</p>
+      <h2>{{ $t.engagements.titre }}</h2>
     </header>
     <div class="cartes cartes--4 cartes--simples">
-      <article class="carte revele" style="--i:0"><span class="carte__icone">{{ partial "icone.html" (dict "nom" "fusee") }}</span><h3>Rapide à livrer</h3><p>Nous travaillons avec les meilleurs outils, IA comprise : vous gagnez des semaines.</p></article>
-      <article class="carte revele" style="--i:1"><span class="carte__icone">{{ partial "icone.html" (dict "nom" "eclair") }}</span><h3>Rapide à charger</h3><p>Des pages légères qui s'affichent vite, même en 4G au fond du jardin.</p></article>
-      <article class="carte revele" style="--i:2"><span class="carte__icone">{{ partial "icone.html" (dict "nom" "bouclier") }}</span><h3>Sans cookie ni traceur</h3><p>Pas de bandeau à cliquer, pas de données revendues. Vos visiteurs vous remercieront.</p></article>
-      <article class="carte revele" style="--i:3"><span class="carte__icone">{{ partial "icone.html" (dict "nom" "cle") }}</span><h3>Il est à vous</h3><p>Code, contenus et accès vous sont remis. Aucune dépendance à notre agence.</p></article>
+      {{- range $i, $c := $t.engagements.cartes }}
+      <article class="carte revele" style="--i:{{ $i }}"><span class="carte__icone">{{ partial "icone.html" (dict "nom" $c.icone) }}</span><h3>{{ $c.titre }}</h3><p>{{ $c.texte }}</p></article>
+      {{- end }}
     </div>
   </div>
 </section>
@@ -166,11 +165,11 @@
     <a class="banniere banniere--demos revele" href="{{ site.Params.outils }}">
       {{ partial "mascotte.html" (dict "id" "demos" "pose" "loupe" "classe" "banniere__mascotte") }}
       <div>
-        <p class="surtitre">Nos démos</p>
-        <p class="banniere__titre">Ce qu'on peut faire avec un site rapide et sans souci</p>
-        <p>Plus de 60 fonctions à essayer en vrai : réservation, paiement, carte, jeux… Cochez ce qui vous plaît, le devis se prépare tout seul.</p>
+        <p class="surtitre">{{ $t.banniere_demos.surtitre }}</p>
+        <p class="banniere__titre">{{ $t.banniere_demos.titre }}</p>
+        <p>{{ $t.banniere_demos.texte }}</p>
       </div>
-      <span class="bouton">Essayer les démos {{ partial "icone.html" (dict "nom" "externe") }}</span>
+      <span class="bouton">{{ $t.banniere_demos.bouton }} {{ partial "icone.html" (dict "nom" "externe") }}</span>
     </a>
   </div>
 </section>
@@ -181,11 +180,9 @@
       {{ partial "mascotte.html" (dict "id" "histoire" "pose" "loupe" "classe" "histoire__mascotte") }}
     </div>
     <div class="histoire__texte revele">
-      <p class="surtitre">Notre histoire</p>
-      <h2>Pourquoi « Ananse » ?</h2>
-      <p>Dans les contes d'Afrique de l'Ouest, <strong>Ananse l'araignée</strong> a obtenu toutes les histoires du monde. Pas par la force, mais par l'astuce, la patience et un fil bien tissé.</p>
-      <p>C'est notre façon de travailler : de petites équipes agiles plutôt que de grosses machines, et des solutions malignes plutôt que des budgets démesurés.</p>
-      <p>Derrière Ananse, plus de <strong>20 ans de projets web</strong> : développement, pilotage d'équipes, recette, données… pour des acteurs comme ViaMichelin, Pixmania ou la DILA.</p>
+      <p class="surtitre">{{ $t.histoire.surtitre }}</p>
+      <h2>{{ $t.histoire.titre }}</h2>
+      {{ $t.histoire.texte | markdownify }}
     </div>
   </div>
 </section>
@@ -193,25 +190,25 @@
 <section class="section">
   <div class="conteneur">
     <header class="section__tete revele">
-      <p class="surtitre">Le blog</p>
-      <h2>Le fil d'Ananse</h2>
-      <p>Les technologies que nous utilisons, expliquées simplement.</p>
+      <p class="surtitre">{{ $t.blog.surtitre }}</p>
+      <h2>{{ $t.blog.titre }}</h2>
+      <p>{{ $t.blog.intro }}</p>
     </header>
     <div class="articles">
       {{- range first 3 (where site.RegularPages "Section" "blog").ByDate.Reverse }}
       {{ partial "carte-article.html" . }}
       {{- end }}
     </div>
-    <p class="centre revele"><a class="lien-fleche" href="{{ "blog/" | relURL }}">Tous les articles {{ partial "icone.html" (dict "nom" "fleche") }}</a></p>
+    <p class="centre revele"><a class="lien-fleche" href="{{ "blog/" | relURL }}">{{ $t.blog.lien }} {{ partial "icone.html" (dict "nom" "fleche") }}</a></p>
   </div>
 </section>
 
 <section id="contact" class="section contact">
   <div class="conteneur contact__grille">
     <div class="revele">
-      <p class="surtitre">Contact</p>
-      <h2>Un projet ? Tissons-le ensemble.</h2>
-      <p>Décrivez-nous votre besoin en quelques lignes : nous vous répondons sous 24 h ouvrées avec des questions, des idées et un devis.</p>
+      <p class="surtitre">{{ $t.contact.surtitre }}</p>
+      <h2>{{ $t.contact.titre }}</h2>
+      <p>{{ $t.contact.texte }}</p>
       <p class="contact__mail">{{ partial "icone.html" (dict "nom" "mail") }} <a href="mailto:{{ site.Params.email }}?subject=Projet%20web">{{ site.Params.email }}</a></p>
     </div>
     {{- with site.Params.web3formsCle }}
@@ -229,7 +226,7 @@
     {{- else }}
     <div class="contact__carte revele">
       {{ partial "mascotte.html" (dict "id" "contact" "pose" "ordi" "classe" "contact__mascotte") }}
-      <a class="bouton" href="mailto:{{ site.Params.email }}?subject=Projet%20web">Écrire à Ananse {{ partial "icone.html" (dict "nom" "fleche") }}</a>
+      <a class="bouton" href="mailto:{{ site.Params.email }}?subject=Projet%20web">{{ $t.contact.bouton }} {{ partial "icone.html" (dict "nom" "fleche") }}</a>
     </div>
     {{- end }}
   </div>
