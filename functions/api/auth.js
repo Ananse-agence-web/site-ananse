@@ -1,4 +1,5 @@
-// Connexion GitHub pour Decap CMS (/admin/) — étape 1 : redirection vers GitHub.
+// Connexion GitHub pour Decap CMS — étape 1 : redirection vers GitHub.
+// GitHub App « Ananse CMS » : droits limités aux dépôts où elle est installée (Contents en lecture/écriture).
 // Variables d'environnement Cloudflare Pages : GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET.
 export async function onRequestGet({ request, env }) {
   if (!env.GITHUB_CLIENT_ID) {
@@ -9,7 +10,6 @@ export async function onRequestGet({ request, env }) {
   const github = new URL("https://github.com/login/oauth/authorize");
   github.searchParams.set("client_id", env.GITHUB_CLIENT_ID);
   github.searchParams.set("redirect_uri", `${url.origin}/api/callback`);
-  github.searchParams.set("scope", "repo,user");
   github.searchParams.set("state", state);
   return new Response(null, {
     status: 302,
