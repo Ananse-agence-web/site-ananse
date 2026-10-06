@@ -1,7 +1,7 @@
 // Connexion GitHub pour Decap CMS — étape 2 : échange du code contre un jeton,
 // puis transmission du jeton à la fenêtre du CMS.
-// Service commun à tous les sites : seuls les sites en *.ananse.fr et *.an6.fr reçoivent le jeton.
-const ORIGINES = /^https:\/\/([a-z0-9-]+\.)*(ananse\.fr|an6\.fr)$/;
+// Service commun à tous les sites : seuls les sites en *.ananse.fr et *.an6.fr (+ domaines clients listés) reçoivent le jeton.
+const ORIGINES = /^https:\/\/([a-z0-9-]+\.)*(ananse\.fr|an6\.fr|lejardindestrolls\.fr)$/;
 
 export async function onRequestGet({ request, env }) {
   const url = new URL(request.url);
